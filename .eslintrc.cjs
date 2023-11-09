@@ -35,5 +35,6 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/extensions': 'warn',
     'import/no-unresolved': 'warn',
+    'import/no-mutable-exports': 'off',
   },
 };

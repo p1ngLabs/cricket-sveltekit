@@ -2,12 +2,12 @@
   import type { HTMLAttributes } from 'svelte/elements';
   import { cn } from '$lib/utils';
 
-  type $$Props = HTMLAttributes<HTMLDivElement>;
+  type $$Props = HTMLAttributes<HTMLParagraphElement>;
 
   let className: $$Props['class'];
   export { className as class };
 </script>
 
-<div class={cn('flex flex-col space-y-2 text-center sm:text-left', className)} {...$$restProps}>
+<p class={cn('text-sm text-muted-foreground', className)} {...$$restProps}>
   <slot />
-</div>
+</p>

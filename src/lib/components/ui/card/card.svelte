@@ -8,6 +8,9 @@
   export { className as class };
 </script>
 
-<div class={cn('flex flex-col space-y-2 text-center sm:text-left', className)} {...$$restProps}>
+<div
+  class={cn('rounded-lg border bg-card text-card-foreground shadow-sm', className)}
+  {...$$restProps}
+>
   <slot />
 </div>

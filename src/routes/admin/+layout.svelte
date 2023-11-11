@@ -19,7 +19,7 @@
 
 <div class="flex justify-between flex-1 w-full">
   <SideNav pathname={data.pathname} />
-  <main class="w-full p-4">
+  <main class="w-full p-4 bg-cricket_gray">
     <slot />
   </main>
 </div>

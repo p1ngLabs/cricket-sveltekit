@@ -15,8 +15,8 @@ const config = {
     },
     extend: {
       colors: {
+        cricket_gray: '#F5F5F5',
         cricket_dark: '#282828',
-        cricket_gray: '#F4F4F4',
         facebook: '#4267B2',
         google: '#DB4437',
         border: 'hsl(var(--border) / <alpha-value>)',

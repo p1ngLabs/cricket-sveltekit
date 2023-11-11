@@ -36,5 +36,7 @@ module.exports = {
     'import/extensions': 'warn',
     'import/no-unresolved': 'warn',
     'import/no-mutable-exports': 'off',
+    'import/no-cycle': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
 };

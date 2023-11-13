@@ -12,3 +12,9 @@ export interface AuthenticatedUser {
   avatar: string | null;
   role: 'administrator' | 'moderator' | 'customer';
 }
+
+export interface ServerResponse {
+  success: boolean;
+  data?: any;
+  message?: string;
+}

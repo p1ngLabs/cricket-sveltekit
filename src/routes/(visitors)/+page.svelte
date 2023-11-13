@@ -1,24 +1,21 @@
 <script lang="ts">
-  import { currentUser } from '$lib/stores/auth.store';
   import { Button } from '$lib/components/ui/button';
-  import { logout } from '$lib/services/auth.service';
 
-  async function handleLogout() {
-    await logout();
-    currentUser.set(null);
-  }
+  export let data;
 </script>
 
 <h1>Welcome to SvelteKit</h1>
-{#if $currentUser}
-  <p>Hi {$currentUser.username}, please take a look around. Here's your profile:</p>
+{#if data.user}
+  <p>Hi {data.user.username}, please take a look around. Here's your profile:</p>
   <ul>
-    <li>Email: {$currentUser.email}</li>
-    <li>First name: {$currentUser.first_name}</li>
-    <li>Last name: {$currentUser.last_name}</li>
-    <li>Role: {$currentUser.role}</li>
+    <li>Email: {data.user.email}</li>
+    <li>First name: {data.user.first_name}</li>
+    <li>Last name: {data.user.last_name}</li>
+    <li>Role: {data.user.role}</li>
   </ul>
-  <Button on:click={handleLogout}>Logout</Button>
+  <form method="POST">
+    <Button type="submit">Logout</Button>
+  </form>
 {/if}
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <a href="/admin/books">Go to books</a>

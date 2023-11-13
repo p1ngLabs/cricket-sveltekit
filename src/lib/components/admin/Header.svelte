@@ -9,9 +9,9 @@
       <button class="sm:hidden">
         <Menu />
       </button>
-      <div class="h-10 w-10">
+      <a href="/" class="h-10 w-10">
         <img src="/images/logo-black-transparent.png" alt="Cricket Logo" />
-      </div>
+      </a>
       <h1 class="font-bold text-2xl select-none">Cricket</h1>
     </div>
     <Avatar.Root>

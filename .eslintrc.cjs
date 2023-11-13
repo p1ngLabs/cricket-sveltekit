@@ -33,10 +33,12 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'import/extensions': 'warn',
-    'import/no-unresolved': 'warn',
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
     'import/no-mutable-exports': 'off',
     'import/no-cycle': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
+    'no-param-reassign': 'off',
+    '@typescript-eslint/no-throw-literal': 'off',
   },
 };

@@ -1,40 +1,29 @@
 import ky from 'ky';
 import { config } from '$lib/config';
+import type { ServerResponse } from '$lib/types';
 
 const AUTH_URL = `${config.app.serverUrl}/auth`;
 
-export const login = async (payload: { email: string; password: string }) => {
-  try {
-    const response = await fetch(`${AUTH_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    }).then((res) => res.json());
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // const response: any = await ky
-    //   .post(`${AUTH_URL}/login`, {
-    //     json: payload,
-    //   })
-    //   .json();
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
+export const login = async (payload: {
+  email: FormDataEntryValue | null;
+  password: FormDataEntryValue | null;
+}): Promise<ServerResponse> =>
+  ky
+    .post(`${AUTH_URL}/login`, {
+      json: payload,
+    })
+    .json();
 
 export const register = async (payload: {
-  firstname: string;
-  lastname: string;
-  username: string;
-  email: string;
-  password: string;
+  firstname: FormDataEntryValue | null;
+  lastname: FormDataEntryValue | null;
+  username: FormDataEntryValue | null;
+  email: FormDataEntryValue | null;
+  password: FormDataEntryValue | null;
 }) => {
   const { firstname, lastname, username, email, password } = payload;
   try {
-    const response: { success: boolean; data?: any; message?: string } = await ky
+    const response: ServerResponse = await ky
       .post(`${AUTH_URL}/register`, {
         json: {
           first_name: firstname,
@@ -57,10 +46,4 @@ export const register = async (payload: {
   }
 };
 
-export const logout = async () => {
-  try {
-    await ky.post(`${AUTH_URL}/logout`);
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const logout = async () => ky.post(`${AUTH_URL}/logout`);

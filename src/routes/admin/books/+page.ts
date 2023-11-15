@@ -1,9 +1,9 @@
-import { config } from '$lib/config';
 import type { PageLoad } from './$types';
+import { getAllBooks } from '$lib/services/books.service';
+import type { ServerResponse } from '$lib/types';
 
-export const load: PageLoad = async ({ fetch }) => {
-  const response = await fetch(`${config.app.serverUrl}/books`);
-  const responseData = await response.json();
+export const load: PageLoad = async () => {
+  const response: ServerResponse = await getAllBooks();
 
-  return { books: responseData.data };
+  return { books: response.data };
 };

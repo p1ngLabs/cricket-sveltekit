@@ -3,6 +3,6 @@ import type { LayoutServerLoad } from './$types';
 
 export const ssr = false;
 
-export const load: LayoutServerLoad = ({ locals }: { locals: any }) => {
+export const load: LayoutServerLoad = ({ locals }) => {
   if (locals.user?.role !== 'administrator') throw redirect(307, '/');
 };

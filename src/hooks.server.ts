@@ -1,9 +1,9 @@
 import type { Handle } from '@sveltejs/kit';
 
-export const handle: Handle = ({ event, resolve }) => {
-  const { locals }: { locals: any } = event;
+export const handle: Handle = async ({ event, resolve }) => {
   const user = event.cookies.get('user');
-  locals.user = user ? JSON.parse(atob(user)) : null;
+  event.locals.user = user ? JSON.parse(atob(user)) : null;
 
-  return resolve(event);
+  const response = await resolve(event);
+  return response;
 };

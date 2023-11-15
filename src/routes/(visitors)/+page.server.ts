@@ -1,10 +1,13 @@
 import { redirect, type Actions } from '@sveltejs/kit';
-import { logout } from '$lib/services/auth.service';
+import * as authService from '$lib/services/auth.service';
 
 export const actions = {
   default: async ({ cookies }) => {
-    await logout();
+    await authService.terminateSession();
+
     cookies.delete('user', { path: '/' });
+    cookies.delete('connect.sid', { path: '/' });
+
     throw redirect(302, '/');
   },
 } satisfies Actions;

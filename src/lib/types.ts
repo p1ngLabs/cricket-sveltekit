@@ -1,5 +1,4 @@
 export interface AuthenticatedUser {
-  id: string;
   first_name: string | null;
   last_name: string | null;
   username: string;
@@ -11,6 +10,7 @@ export interface AuthenticatedUser {
   city: string | null;
   avatar: string | null;
   role: 'administrator' | 'moderator' | 'customer';
+  active: boolean;
 }
 
 export interface ServerResponse {

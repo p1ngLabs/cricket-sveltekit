@@ -3,15 +3,12 @@
   import { Label } from '$lib/components/ui/label';
   import { Input } from '$lib/components/ui/input';
   import { Button } from '$lib/components/ui/button';
-
-  export let data;
+  import { config } from '$lib/config';
 </script>
 
 <svelte:head>
-  <title>Log in to Cricket</title>
+  <title>Log in to {config.app.name}</title>
 </svelte:head>
-
-<h2>Welcome, {data.user?.username}</h2>
 
 <Card.Root class="w-96">
   <Card.Header>

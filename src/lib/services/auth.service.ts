@@ -5,25 +5,13 @@ import type { ServerResponse } from '$lib/types';
 const AUTH_URL = `${config.app.serverUrl}/auth`;
 
 export async function register(payload: {
-  firstname: FormDataEntryValue | null;
-  lastname: FormDataEntryValue | null;
+  first_name: FormDataEntryValue | null;
+  last_name: FormDataEntryValue | null;
   username: FormDataEntryValue | null;
   email: FormDataEntryValue | null;
   password: FormDataEntryValue | null;
 }): Promise<ServerResponse> {
-  const { firstname, lastname, username, email, password } = payload;
-
-  return ky
-    .post(`${AUTH_URL}/register`, {
-      json: {
-        first_name: firstname,
-        last_name: lastname,
-        username,
-        email,
-        password,
-      },
-    })
-    .json();
+  return ky.post(`${AUTH_URL}/register`, { json: payload }).json();
 }
 
 export async function login(payload: {

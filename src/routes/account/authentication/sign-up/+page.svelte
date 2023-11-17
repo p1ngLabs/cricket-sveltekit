@@ -3,94 +3,56 @@
   import { Label } from '$lib/components/ui/label';
   import { Input } from '$lib/components/ui/input';
   import { Button } from '$lib/components/ui/button';
-  import { register } from '$lib/services/auth.service';
-  import { currentUser } from '$lib/stores/auth.store';
-
-  export let firstname = '';
-  export let lastname = '';
-  export let username = '';
-  export let email = '';
-  export let password = '';
-
-  async function handleSubmit() {
-    const user = await register({ firstname, lastname, username, email, password });
-    if (user) currentUser.set(user);
-  }
+  import { config } from '$lib/config';
 </script>
 
 <svelte:head>
-  <title>Sign up to Cricket</title>
+  <title>Sign up to {config.app.name}</title>
 </svelte:head>
-
-<h2>Welcome, {$currentUser?.username}</h2>
 
 <Card.Root class="w-96">
   <Card.Header>
     <Card.Title tag="h1" class="text-2xl text-center font-bold uppercase">Sign Up</Card.Title>
   </Card.Header>
-  <form method="POST" on:submit|preventDefault={handleSubmit}>
+  <form method="POST">
     <Card.Content>
       <div class="grid w-full gap-3">
         <div class="flex flex-col space-y-1.5">
           <Label for="firstname" class="block"
-            >First Name <span class="text-red-500 font-bold">*</span></Label
+            >First Name&nbsp;<span class="text-red-500 font-bold">*</span></Label
           >
-          <Input
-            type="text"
-            id="firstname"
-            name="firstname"
-            placeholder="Please enter your firstname"
-            bind:value={firstname}
-          />
+          <Input type="text" name="firstname" placeholder="Please enter your firstname" />
         </div>
         <div class="flex flex-col space-y-1.5">
           <Label for="lastname" class="block"
-            >Last Name <span class="text-red-500 font-bold">*</span></Label
+            >Last Name&nbsp;<span class="text-red-500 font-bold">*</span></Label
           >
-          <Input
-            type="text"
-            id="lastname"
-            name="lastname"
-            placeholder="Please enter your lastname"
-            bind:value={lastname}
-          />
+          <Input type="text" name="lastname" placeholder="Please enter your lastname" />
         </div>
         <div class="flex flex-col space-y-1.5">
           <Label for="username" class="block"
-            >Username <span class="text-red-500 font-bold">*</span></Label
+            >Username&nbsp;<span class="text-red-500 font-bold">*</span></Label
           >
-          <Input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Please enter your username"
-            bind:value={username}
-          />
+          <Input type="text" name="username" placeholder="Please enter your username" />
         </div>
         <div class="flex flex-col space-y-1.5">
           <Label for="email" class="block"
-            >Email <span class="text-red-500 font-bold">*</span></Label
+            >Email&nbsp;<span class="text-red-500 font-bold">*</span></Label
           >
-          <Input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Please enter your email"
-            bind:value={email}
-          />
+          <Input type="email" name="email" placeholder="Please enter your email" />
         </div>
         <div class="flex flex-col space-y-1.5">
           <Label for="password" class="block"
-            >Password <span class="text-red-500 font-bold">*</span></Label
+            >Password&nbsp;<span class="text-red-500 font-bold">*</span></Label
           >
-          <Input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Please enter your password"
-            bind:value={password}
-          />
+          <Input type="password" name="password" placeholder="Please enter your password" />
         </div>
+        <!-- <div class="flex flex-col space-y-1.5">
+          <Label for="password-cf" class="block"
+            >Confirm Password&nbsp;<span class="text-red-500 font-bold">*</span></Label
+          >
+          <Input type="password" name="password-cf" placeholder="Please enter your password" />
+        </div> -->
       </div>
     </Card.Content>
     <Card.Footer>

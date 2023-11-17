@@ -23,7 +23,7 @@ export const actions = {
     if (!responseJson.success) fail(401);
 
     cookies.set('connect.sid', cookieValue, { path: '/' });
-    cookies.set('user', btoa(JSON.stringify(responseJson.data)), { path: '/' });
+    cookies.set('resutnerruc', btoa(JSON.stringify(responseJson.data)), { path: '/' });
 
     throw redirect(302, '/');
   },

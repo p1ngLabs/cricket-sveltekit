@@ -1,8 +1,15 @@
 <script lang="ts">
+  import type { PageData } from './$types';
+  import { config } from '$lib/config';
   import { Button } from '$lib/components/ui/button';
 
-  export let data;
+  export let data: PageData;
 </script>
+
+<svelte:head>
+  <title>{config.app.name}</title>
+  <meta name="description" content="A tiny Library and Bookstore in Hanoi" />
+</svelte:head>
 
 <h1>Welcome to SvelteKit</h1>
 {#if data.user}
